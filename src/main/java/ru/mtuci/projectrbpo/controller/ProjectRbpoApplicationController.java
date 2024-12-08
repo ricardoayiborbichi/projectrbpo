@@ -1,15 +1,18 @@
 package ru.mtuci.projectrbpo.controller;
 
-import lombok.Data;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
-@RestController
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class ProjectRbpoApplicationController {
-
-    @GetMapping("/hello")
-    public String sayHello() {
-        return "Hello, World!";
+    public static void main(String[] args) {
+        SpringApplication.run(ProjectRbpoApplicationController.class, args);
     }
+
 }
 
+//    @GetMapping("/hello")
+//    public String sayHello() {
+//        return "Hello, World!";
+//    }

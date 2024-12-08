@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/antivirus_db
-    username: your_username
-    password: your_password
+    username: postgres
+    password: 572114
   jpa:
     hibernate:
       ddl-auto: update
