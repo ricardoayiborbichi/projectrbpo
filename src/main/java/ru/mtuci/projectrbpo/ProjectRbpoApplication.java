@@ -10,4 +10,3 @@ public class ProjectRbpoApplication {
 		SpringApplication.run(ProjectRbpoApplication.class, args);
 	}
 }
-
