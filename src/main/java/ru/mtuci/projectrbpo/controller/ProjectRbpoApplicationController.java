@@ -1,6 +1,7 @@
 package ru.mtuci.projectrbpo.controller;
 
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -16,3 +17,9 @@ public class ProjectRbpoApplicationController {
 //    public String sayHello() {
 //        return "Hello, World!";
 //    }
+
+
+
+
+
+

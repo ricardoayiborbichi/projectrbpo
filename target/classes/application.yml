@@ -1,9 +1,18 @@
+
 spring:
+  application:
+    name: project
   datasource:
+    password: 572114
     url: jdbc:postgresql://localhost:5432/antivirus_db
     username: postgres
-    password: 572114
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+
+
+jwt:
+  secret: "Walkermoon"
+  expiration: 3600000 # 1 hour in milliseconds
+
+

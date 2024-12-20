@@ -12,7 +12,7 @@ import java.util.*;
 @Entity
 @Data
 @Table(name = "users")
-public class User implements UserDetails { // Implémente UserDetails
+public class User implements UserDetails { // Implement UserDetails
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,47 +26,57 @@ public class User implements UserDetails { // Implémente UserDetails
     @Column(name = "email", unique = true)
     private String email;
 
+    //@Enumerated(EnumType.ORDINAL)
     @Column(name = "role")
     private String role;
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Licence> licences;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Licence> licences; // One user can have many licences
 
-    // Implémentation des méthodes de UserDetails
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Device> devices; // One user can have many devices
+
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Licence> ownedLicences; // Licences where the user is the owner
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<LicenceHistory> licenceHistories; // Licence changes associated with this user
+
+
+    // Method of ZImplementation  UserDetails
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority(role)); // Retourne le rôle
+        return Collections.singletonList(new SimpleGrantedAuthority(role));
     }
 
     @Override
     public String getPassword() {
-        return passwordHash; // Renvoie le hash du mot de passe
+        return passwordHash;
     }
 
     @Override
     public String getUsername() {
-        return login; // Utilise le login comme nom d'utilisateur
+        return login;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return true; // Vous pouvez personnaliser la logique
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true; // Vous pouvez personnaliser la logique
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true; // Vous pouvez personnaliser la logique
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return true; // Vous pouvez personnaliser la logique
+        return true;
     }
 }
